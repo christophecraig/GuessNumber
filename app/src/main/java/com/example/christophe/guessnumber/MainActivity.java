@@ -1,6 +1,7 @@
 package com.example.christophe.guessnumber;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,8 +85,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     public String checkNumber (String number) {
-        if (Integer.parseInt(number) < this.num) return "+";
-        if (Integer.parseInt(number) > this.num) return "-";
+        if (Integer.parseInt(number) < this.num) {
+            this.res.setTextColor(Color.parseColor("#CC0000"));
+            return "+";
+        }
+        if (Integer.parseInt(number) > this.num) {
+            this.res.setTextColor(Color.parseColor("#CC0000"));
+            return "-";
+        }
+        this.res.setTextColor(Color.parseColor("#44CC44"));
         this.num = (int) Math.round(100 * Math.random());
         display.setText(" OUI FORMIDABLE EXCELLENT VOILA !!");
         return "=";
